@@ -12,12 +12,9 @@ main(){
 	install_java_jdk
 	add_jenkins_yum_repo
 	import_jenkins_key
-	upgrade_yum
 	install_jenkins
 	start_jenkins_service	
-
 }
-
 
 update_yum_packages(){
 	sudo yum -y update
@@ -28,8 +25,7 @@ install_java_jdk(){
 	yum install -y java-1.8.0-openjdk
 }
 
-
-add_jenkins+yum+repo(){
+add_jenkins_yum_repo(){
 	wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
 }
 
@@ -48,4 +44,5 @@ start_jenkins_service(){
 	sudo systemctl daemon-reload
 	sudo systemctl start jenkins
 }
+
 main "$@"
