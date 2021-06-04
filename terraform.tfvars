@@ -12,3 +12,4 @@ chef_validator_file_name = "validator"
 chef_organization_name   = "org-chef"
 jenkins_java_version     = "java-1.8.0-openjdk"
 app_java_version         = "java-11-openjdk-devel"
+allowed_cidrs		 = ["122.12.12.12"]

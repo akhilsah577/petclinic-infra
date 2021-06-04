@@ -1,3 +1,4 @@
+TFPLAN = .tfplan
 unit:
 	conftest test -p test/unit/vpc.rego vpc.tf
 	conftest test -p test/unit/subnet.rego subnet.tf
@@ -7,6 +8,13 @@ unit:
 	conftest test -p test/unit/web.rego web.tf
 	terraform validate
 	terraform fmt
+contract:
+	terraform plan -out $(TFPLAN) -var-file=terraform.tfvars
+	terraform show -json $(TFPLAN) > $(TFPLAN).json
+	conftest test -p test/contract/verify.rego $(TFPLAN).json
 
 apply:
 	terraform apply
+clean:  
+	terraform destroy --force  || true
+	rm $(TFPLAN) $(TFPLAN).json || true

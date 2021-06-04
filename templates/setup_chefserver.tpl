@@ -30,11 +30,11 @@ reconfigure_chef_server(){
 }
 
 create_admin_user(){
-	sudo chef-server-ctl user-create ${chef_admin_username} ${chef_admin_first_name} ${chef_admin_last_name} ${chef_admin_email} '\"${chef_admin_password}\"' --filename ${file_name}
+	sudo chef-server-ctl user-create ${chef_admin_username} ${chef_admin_first_name} ${chef_admin_last_name} ${chef_admin_email} '\"${chef_admin_password}\"' --filename ${chef_validator_file_name}
 }
 
 create_chef_organization(){
-	sudo chef-server-ctl org-create short_name '\"${organization_name}\"' --association_user ${chef_admin_username} --filename ${organization_name}-validator.pem
+	sudo chef-server-ctl org-create short_name '\"${chef_organization_name}\"' --association_user ${chef_admin_username} --filename ${chef_organization_name}-validator.pem
 }
 
 main "$@"
