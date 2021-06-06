@@ -1,7 +1,7 @@
 package main
 
 region := "us-east-2"
-owner := "rosemary"
+owner := "ee"
 
 contains_variables(variables) {
   variables.vpc_cidr.value = "10.128.0.0/25"

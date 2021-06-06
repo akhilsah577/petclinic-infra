@@ -6,18 +6,16 @@ deny[msg] {
 }
 
 deny[msg] {
-  not input.resource.aws_elb.web_elb
-  msg = "Load Balncer for Web machine not declared"
-}
-
-deny[msg] {
-  not input.resource.aws_security_group.web_sg
-  msg = "Web EC2 machine security group not declared"
-}
-
-deny[msg] {
   not input.data.aws_ami.web
   msg = "AMI data not being interpolated"
 }
 
+deny[msg] {
+  not input.data.template_file.install_java_script
+  msg = "Provisioning block for installing Java missing"
+}
 
+deny[msg] {
+  not input.data.template_file.install_java_script.vars.app_java_version
+  msg = "Java version not parameterized"
+}

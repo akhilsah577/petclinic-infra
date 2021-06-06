@@ -6,6 +6,9 @@ unit:
 	conftest test -p test/unit/nat.rego nat.tf
 	conftest test -p test/unit/mgmt.rego mgmt.tf
 	conftest test -p test/unit/web.rego web.tf
+	conftest test -p test/unit/securitygroup.rego securitygroup.tf
+	conftest test -p test/unit/elb.rego elb.tf
+	conftest test -p test/unit/nacl.rego nacl.tf
 	terraform validate
 	terraform fmt
 contract:

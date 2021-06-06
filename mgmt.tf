@@ -73,5 +73,3 @@ resource "aws_instance" "mgmt" {
   user_data_base64 = data.template_cloudinit_config.mgmt_config.rendered
 
 }
-
-
