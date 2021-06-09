@@ -8,7 +8,8 @@ set -o nounset
 set -o xtrace
 
 main(){
-	get_chef_server_package
+	install_wget
+        get_chef_server_package
 	install_chef_server
 	reconfigure_chef_server
 	create_admin_user
@@ -16,9 +17,11 @@ main(){
 	reconfigure_chef_server	
 }
 
-
+install_wget(){
+	sudo yum install -y wget
+}
 get_chef_server_package(){
-	wget https://packages.chef.io/files/stable/chef-server/${chef_server_version}/el/7/chef-server-core-${chef_server_version}-1.el7.x86_64.rpm
+	sudo wget https://packages.chef.io/files/stable/chef-server/${chef_server_version}/el/7/chef-server-core-${chef_server_version}-1.el7.x86_64.rpm -P /tmp/
 }
 
 install_chef_server(){
